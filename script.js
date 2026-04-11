@@ -1,48 +1,49 @@
-// Homepage button
-function showMessage() {
-  alert("Welcome to Campus Life App!");
-}
-
-// EVENTS API (working)
+// EVENTS (realistic data)
 function loadEvents() {
   const list = document.getElementById("eventsList");
-  list.innerHTML = "Loading events...";
+  list.innerHTML = "";
 
-  fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
-    .then(response => response.json())
-    .then(data => {
-      list.innerHTML = "";
+  const events = [
+    { title: "Basketball Game", desc: "Join us at the gym at 6 PM." },
+    { title: "Club Fair", desc: "Meet clubs on campus at 12 PM." },
+    { title: "Movie Night", desc: "Free movie in the auditorium." },
+    { title: "Study Session", desc: "Group study in the library." }
+  ];
 
-      data.forEach(event => {
-        const li = document.createElement("li");
-        li.textContent = event.title;
-        list.appendChild(li);
-      });
-    })
-    .catch(error => {
-      list.innerHTML = "Error loading events.";
-      console.error(error);
-    });
+  events.forEach(event => {
+    const div = document.createElement("div");
+    div.className = "card p-3 m-2";
+
+    div.innerHTML = `
+      <h5>${event.title}</h5>
+      <p>${event.desc}</p>
+    `;
+
+    list.appendChild(div);
+  });
 }
 
-// DINING API (working)
+// DINING (realistic data)
 function getFood() {
   const list = document.getElementById("foodList");
-  list.innerHTML = "Loading dining options...";
+  list.innerHTML = "";
 
-  fetch("https://jsonplaceholder.typicode.com/users")
-    .then(response => response.json())
-    .then(data => {
-      list.innerHTML = "";
+  const places = [
+    { name: "Campus Cafe", location: "Student Center" },
+    { name: "Pizza Spot", location: "Near Dorms" },
+    { name: "Healthy Bites", location: "Gym Area" },
+    { name: "Burger Grill", location: "Main Hall" }
+  ];
 
-      data.forEach(place => {
-        const li = document.createElement("li");
-        li.textContent = place.company.name;
-        list.appendChild(li);
-      });
-    })
-    .catch(error => {
-      list.innerHTML = "Error loading food.";
-      console.error(error);
-    });
+  places.forEach(place => {
+    const div = document.createElement("div");
+    div.className = "card p-3 m-2";
+
+    div.innerHTML = `
+      <h5>${place.name}</h5>
+      <p>${place.location}</p>
+    `;
+
+    list.appendChild(div);
+  });
 }
