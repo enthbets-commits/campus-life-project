@@ -1,0 +1,11 @@
+/* General page styling */
+body {
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+/* Navigation links */
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+}
