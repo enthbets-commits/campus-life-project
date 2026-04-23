@@ -1,49 +1,30 @@
-// EVENTS (realistic data)
-function loadEvents() {
-  const list = document.getElementById("eventsList");
-  list.innerHTML = "";
+const events = [
+  { name: "🎉 Club Fair", date: "April 30", location: "Student Center" },
+  { name: "🏀 Basketball Game", date: "May 2", location: "Main Gym" },
+  { name: "🎬 Movie Night", date: "May 5", location: "Auditorium" }
+];
 
-  const events = [
-    { title: "Basketball Game", desc: "Join us at the gym at 6 PM." },
-    { title: "Club Fair", desc: "Meet clubs on campus at 12 PM." },
-    { title: "Movie Night", desc: "Free movie in the auditorium." },
-    { title: "Study Session", desc: "Group study in the library." }
-  ];
+const container = document.getElementById("events");
+
+function loadEvents() {
+  if (!container) return;
+
+  container.innerHTML = "";
 
   events.forEach(event => {
-    const div = document.createElement("div");
-    div.className = "card p-3 m-2";
+    const col = document.createElement("div");
+    col.className = "col-md-4";
 
-    div.innerHTML = `
-      <h5>${event.title}</h5>
-      <p>${event.desc}</p>
+    col.innerHTML = `
+      <div class="card p-4 shadow-sm">
+        <h5>${event.name}</h5>
+        <p><strong>Date:</strong> ${event.date}</p>
+        <p><strong>Location:</strong> ${event.location}</p>
+      </div>
     `;
 
-    list.appendChild(div);
+    container.appendChild(col);
   });
 }
 
-// DINING (realistic data)
-function getFood() {
-  const list = document.getElementById("foodList");
-  list.innerHTML = "";
-
-  const places = [
-    { name: "Campus Cafe", location: "Student Center" },
-    { name: "Pizza Spot", location: "Near Dorms" },
-    { name: "Healthy Bites", location: "Gym Area" },
-    { name: "Burger Grill", location: "Main Hall" }
-  ];
-
-  places.forEach(place => {
-    const div = document.createElement("div");
-    div.className = "card p-3 m-2";
-
-    div.innerHTML = `
-      <h5>${place.name}</h5>
-      <p>${place.location}</p>
-    `;
-
-    list.appendChild(div);
-  });
-}
+loadEvents();
